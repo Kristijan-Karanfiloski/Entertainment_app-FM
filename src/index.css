@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 *,
 *::before,
 *::after {
@@ -14,4 +16,10 @@ svg {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+body{
+  /*min-height: 100vh;*/
+  background: #10141E;
+  font-family: "Roboto", sans-serif;
 }

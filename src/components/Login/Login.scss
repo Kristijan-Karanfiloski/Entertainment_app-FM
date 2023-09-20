@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.login-page {
+  //height: 100vh;
+  display: flex;
+  color: white;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  margin-top: 5rem;
+
+  .login-page__container {
+    background: #161d2f;
+    width: 20rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 0.75rem;
+
+    //align-items: start;
+
+    .login-page__container__title {
+      font-size: 2rem;
+    }
+
+    .login-page__container__form {
+      display: grid;
+      font-size: 0.85rem;
+
+      .login-page__container__form__input-container {
+        display: grid;
+        position: relative;
+
+        .login-page__container__form__input {
+          outline: none;
+          background: none;
+          padding: 0 0 0.75rem 0.75rem;
+          margin: 0.5rem 0;
+          color: gray;
+          border: none;
+          caret-color: #fc4747; /* or any other color you prefer */
+          border-bottom: 2px solid #5a698f;
+        }
+
+        .login-page__container__form__input_email__error {
+          position: absolute;
+          right: 1rem; /* Adjust as per your preference */
+          bottom: 82%;
+          transform: translateY(50%);
+          color: red;
+        }
+
+        .login-page__container__form__input_password__error {
+          position: absolute;
+          right: 1rem; /* Adjust as per your preference */
+          bottom: 30%;
+          transform: translateY(50%);
+          color: red;
+        }
+      }
+
+      .login-page__container__form__button {
+        margin-top: 1rem;
+        padding: 0.75rem 0;
+        border: none;
+        outline: none;
+        border-radius:.25rem;
+        cursor: pointer;
+      }
+      
+      .login-page__container__form__button{
+        background: #fc4747;
+        color: white;
+      }
+      
+      .login-page__container__form__button--valid {
+        background-color: green;  // Color when both inputs are valid
+      }
+      
+      .login-page__container__form__button--invalid {
+        background-color: red;  // Color when at least one input is invalid
+      }
+    }
+
+    .login-page__container__text {
+      text-align: center;
+      //border: 1px solid red;
+
+      span {
+        color: #fc4747;
+        margin-left: 0.2rem;
+      }
+    }
+  }
+}
