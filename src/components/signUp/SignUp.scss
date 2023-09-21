@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-.login-page {
+.signUp-page {
   //height: 100vh;
   display: flex;
   color: white;
@@ -11,7 +11,7 @@
   font-family: "Roboto", sans-serif;
   margin-top: 5rem;
 
-  .login-page__container {
+  .signUp-page__container {
     background: #161d2f;
     width: 20rem;
     padding: 2rem;
@@ -22,19 +22,19 @@
 
     //align-items: start;
 
-    .login-page__container__title {
+    .signUp-page__container__title {
       font-size: 2rem;
     }
 
-    .login-page__container__form {
+    .signUp-page__container__form {
       display: grid;
       font-size: 0.85rem;
 
-      .login-page__container__form__input-container {
+      .signUp-page__container__form__input-container {
         display: grid;
         position: relative;
 
-        .login-page__container__form__input {
+        .signUp-page__container__form__input {
           outline: none;
           background: none;
           padding: 0 0 0.75rem 0.75rem;
@@ -45,7 +45,7 @@
           border-bottom: 2px solid #5a698f;
         }
 
-        .login-page__container__form__input_email__error {
+        .signUp-page__container__form__input_email__error {
           position: absolute;
           right: 1rem; /* Adjust as per your preference */
           bottom: 82%;
@@ -53,7 +53,7 @@
           color: red;
         }
 
-        .login-page__container__form__input_password__error {
+        .signUp-page__container__form__input_password__error {
           position: absolute;
           right: 1rem; /* Adjust as per your preference */
           bottom: 30%;
@@ -62,7 +62,7 @@
         }
       }
 
-      .login-page__container__form__button {
+      .signUp-page__container__form__button {
         margin-top: 1rem;
         padding: 0.75rem 0;
         border: none;
@@ -71,21 +71,21 @@
         cursor: pointer;
       }
       
-      .login-page__container__form__button{
+      .signUp-page__container__form__button{
         background: #fc4747;
         color: white;
       }
       
-      .login-page__container__form__button--valid {
+      .signUp-page__container__form__button--valid {
         background-color: green;  // Color when both inputs are valid
       }
       
-      .login-page__container__form__button--invalid {
+      .signUp-page__container__form__button--invalid {
         background-color: red;  // Color when at least one input is invalid
       }
     }
 
-    .login-page__container__text {
+    .signUp-page__container__text {
       text-align: center;
       //border: 1px solid red;
 

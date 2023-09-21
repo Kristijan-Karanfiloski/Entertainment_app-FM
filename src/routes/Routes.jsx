@@ -1,9 +1,11 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import Login from "../components/Login/Login.jsx";
+import SignUp from "../components/signUp/SignUp.jsx";
 import RootLayout from "../components/RootLayout.jsx";
+import Login from "../components/login/Login.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
+  { path: "/signUp", element: <SignUp /> },
   { path: "/routeLayout", element: <RootLayout /> },
   // {
   //     path: "/dashboard",

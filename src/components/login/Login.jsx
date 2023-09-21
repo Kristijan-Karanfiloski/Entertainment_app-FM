@@ -9,12 +9,8 @@ const Login = () => {
   const [emailValidationMessage, setEmailValidationMessage] = useState("");
   const [passwordValidationMessage, setPasswordValidationMessage] =
     useState("");
-  // const [passwordValid, setPasswordValid] = useState(true);
-  // const [isFirstLoad, setIsFirstLoad] = useState(true);
-  const navigate = useNavigate();
 
-  console.log("Email :", email);
-  // console.log("Password :", password);
+  const navigate = useNavigate();
 
   const checkIfPasswordIsValid = (password) => {
     if (password.length < 6) {
@@ -33,42 +29,46 @@ const Login = () => {
     } else {
       console.log("Successfully");
     }
-    // else if (!email.length) {
-    //   return "Can't be empty";
-    // }
 
     // return "";
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
+
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    const emailExists = existingUsers.some((user) => user.email === email);
+
+    if (emailExists) {
+      alert("Account with that email already exists");
+      setPassword("");
+      setEmail("");
+      return;
+    }
+
+    // console.log(email);
     const errorMessageEmail = checkIfEmailIsValid(email);
     const errorMessagePassword = checkIfPasswordIsValid(password);
 
-    // checkIfPasswordIsValid(password);
-
-    // setIsFirstLoad(false);
-    // setEmailValid(email !== "");
-    // setPasswordValid(password !== "");
-    //
-    // if (email === "" || password === "") {
-    //   console.log("enter value");
-    // } else {
-    //   navigate("/routeLayout");
-    //   console.log("submitted");
-    // }
-
     console.log({ errorMessageEmail });
     if (!errorMessageEmail && !errorMessagePassword) {
+      existingUsers.push({ email, password });
+
+      localStorage.setItem("users", JSON.stringify(existingUsers));
+      // localStorage.setItem("email", JSON.stringify(email));
+      // localStorage.setItem("password", JSON.stringify(password));
+      // localStorage.setItem("signUp", JSON.stringify(password));
+
+      console.log("ACCOUNT CREATED");
+      alert("ACCOUNT CREATED");
       navigate("/routeLayout");
-      console.log("submitted");
     } else {
       setEmailValidationMessage(errorMessageEmail);
       setPasswordValidationMessage(errorMessagePassword);
     }
   };
-  console.log({ emailValidationMessage });
+  // console.log({ emailValidationMessage });
   return (
     <div className="login-page">
       <div className="login-page__icon">
@@ -119,12 +119,13 @@ const Login = () => {
             // disabled={isFirstLoad ? true : !(emailValid && passwordValid)}
             type="submit"
           >
-            Login to your account
+            {/*SignUp to your account*/}
+            Login
           </button>
         </form>
         {/*{valid && <p>Insert a value</p>}*/}
         <p className="login-page__container__text">
-          Don't have an account? <span>Sign Up</span>{" "}
+          Don't have an account? <Link to="/signUp">Sign Up</Link>
         </p>
       </div>
     </div>
