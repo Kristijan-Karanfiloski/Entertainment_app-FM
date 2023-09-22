@@ -2,10 +2,6 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../../../public/assets/logo.svg";
 import "./SignUp.scss";
 import { useState } from "react";
-// import * as response from "express";
-
-// const storedItems = JSON.parse(localStorage.getItem("signUpEmail"));
-// console.log(storedItems);
 
 const SignUp = () => {
   // const [users, setUsers] = useState(storedItems);
@@ -43,8 +39,8 @@ const SignUp = () => {
   // }, []);
 
   const checkIfSignUpPasswordIsValid = (signUpPassword) => {
-    if (signUpPassword.length < 6) {
-      return "Can't be empty";
+    if (signUpPassword.length <= 5) {
+      return "Password must be at least 6 characters long";
       // console.log("signUpEmail must be at least 6 characters");
     } else {
       console.log("Successfully");
@@ -55,7 +51,7 @@ const SignUp = () => {
     const signUpEmailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     // console.log("signUpEmail", signUpEmailRegex.test(signUpEmail));
     if (!signUpEmailRegex.test(signUpEmail)) {
-      return "Can't be empty";
+      return "Invalid email";
     } else {
       console.log("Successfully");
     }
@@ -76,9 +72,8 @@ const SignUp = () => {
     );
 
     if (signUpEmailExists) {
-      alert("Account with that signUpEmail already exists");
-      setPassword("");
-      setEmail("");
+      alert("Account with that Email already exists");
+
       return;
     }
 
@@ -114,7 +109,7 @@ const SignUp = () => {
 
       console.log("ACCOUNT CREATED");
       alert("ACCOUNT CREATED");
-      navigate("/login");
+      navigate("/");
     } else {
       setEmailValidationMessage(errorMessageEmail);
       setPasswordValidationMessage(errorMessagePassword);
@@ -139,6 +134,7 @@ const SignUp = () => {
               type="text"
               name="username"
               // required
+              // placeholder="Email address"
               placeholder="Email address"
               value={signUpEmail}
               onChange={(e) => setEmail(e.target.value)}
@@ -152,7 +148,7 @@ const SignUp = () => {
             {/*<label>Password</label>*/}
             <input
               className="signUp-page__container__form__input"
-              type="signUpPassword"
+              type="password"
               name="signUpPassword"
               // required
               placeholder="Password"

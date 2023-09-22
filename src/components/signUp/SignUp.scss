@@ -45,26 +45,26 @@
           border-bottom: 2px solid #5a698f;
         }
 
-        .signUp-page__container__form__input_email__error {
+        .signUp-page__container__form__input_signUpEmail__error {
           position: absolute;
-          right: 1rem; /* Adjust as per your preference */
-          bottom: 82%;
+          right: 0.2rem; /* Adjust as per your preference */
+          bottom: 45%;
           transform: translateY(50%);
           color: red;
         }
 
-        .signUp-page__container__form__input_password__error {
+        .signUp-page__container__form__input_signUpPassword__error {
           position: absolute;
-          right: 1rem; /* Adjust as per your preference */
-          bottom: 30%;
+          right: 0; /* Adjust as per your preference */
+          bottom: -15%;
           transform: translateY(50%);
           color: red;
         }
       }
 
       .signUp-page__container__form__button {
-        margin-top: 1rem;
-        padding: 0.75rem 0;
+        margin-top: 2.5rem;
+        padding: 0.65rem 0;
         border: none;
         outline: none;
         border-radius:.25rem;

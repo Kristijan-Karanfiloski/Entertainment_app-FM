@@ -4,69 +4,107 @@ import "./Login.scss";
 import { useState } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailValidationMessage, setEmailValidationMessage] = useState("");
-  const [passwordValidationMessage, setPasswordValidationMessage] =
-    useState("");
+  const [loginEmail, setLoginsEmail] = useState("");
+  const [loginPassword, setPassword] = useState("");
+  const [emailValidationMessage, setLoginsEmailValidationMessage] =
+    useState(false);
+  const [loginPasswordValidationMessage, setPasswordValidationMessage] =
+    useState(false);
 
   const navigate = useNavigate();
 
-  const checkIfPasswordIsValid = (password) => {
-    if (password.length < 6) {
-      return "Can't be empty";
-      // console.log("email must be at least 6 characters");
-    } else {
-      console.log("Successfully");
-    }
-  };
+  // const checkIfPasswordIsValid = (loginPassword) => {
+  //   if (loginPassword.length <= 5) {
+  //     return "Can't be empty";
+  //     // console.log("email must be at least 6 characters");
+  //   } else {
+  //     // console.log("Successfully");
+  //   }
+  // };
 
-  const checkIfEmailIsValid = (email) => {
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    // console.log("email", emailRegex.test(email));
-    if (!emailRegex.test(email)) {
-      return "Can't be empty";
-    } else {
-      console.log("Successfully");
-    }
+  // const checkIfEmailIsValid = (loginEmail) => {
+  //   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  //   // console.log("email", emailRegex.test(email));
+  //   if (!emailRegex.test(loginEmail)) {
+  //     // return "Can't be empty";
+  //     return "Email does not exist";
+  //   } else {
+  //     // console.log("Successfully");
+  //   }
+  //
+  //   // return "";
+  // };
 
-    // return "";
-  };
-
-  const handleOnSubmit = async (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const existingUsersJSON = JSON.parse(localStorage.getItem("users")) || [];
+    // const existingUsersJSON = JSON.parse(localStorage.getItem("users"));
 
-    const emailExists = existingUsers.some((user) => user.email === email);
+    //this will return true
+
+    const emailExists = existingUsersJSON.some(
+      (user) => user.signUpEmail === loginEmail
+    );
+
+    //this will return false
+    const passwordMismatchForUser = existingUsersJSON.some(
+      (user) =>
+        user.signUpEmail === loginEmail && user.signUpPassword !== loginPassword
+    );
+
+    // console.log("Email exists: ", emailExists);
+
+    console.log("Sign Up Email :", { loginEmail });
+    console.log("Sign Up Password :", { loginPassword });
 
     if (emailExists) {
-      alert("Account with that email already exists");
-      setPassword("");
-      setEmail("");
-      return;
-    }
+      if (passwordMismatchForUser) {
+        console.log("Password mismatch if :", emailExists);
 
-    // console.log(email);
-    const errorMessageEmail = checkIfEmailIsValid(email);
-    const errorMessagePassword = checkIfPasswordIsValid(password);
-
-    console.log({ errorMessageEmail });
-    if (!errorMessageEmail && !errorMessagePassword) {
-      existingUsers.push({ email, password });
-
-      localStorage.setItem("users", JSON.stringify(existingUsers));
-      // localStorage.setItem("email", JSON.stringify(email));
-      // localStorage.setItem("password", JSON.stringify(password));
-      // localStorage.setItem("signUp", JSON.stringify(password));
-
-      console.log("ACCOUNT CREATED");
-      alert("ACCOUNT CREATED");
-      navigate("/routeLayout");
+        // Password does not match for the provided email.
+        setPasswordValidationMessage(!loginPasswordValidationMessage);
+        // setLoginsEmailValidationMessage(emailValidationMessage);
+        setLoginsEmailValidationMessage(false);
+      } else {
+        console.log("Password mismatch else :", emailExists);
+        // Password matches, navigate to the next page.
+        setPasswordValidationMessage(loginPasswordValidationMessage);
+        setLoginsEmailValidationMessage(emailValidationMessage);
+        navigate("/routeLayout");
+      }
     } else {
-      setEmailValidationMessage(errorMessageEmail);
-      setPasswordValidationMessage(errorMessagePassword);
+      console.log("EmailExist from else :", emailExists);
+      // Email doesn't exist
+      setLoginsEmailValidationMessage(!emailValidationMessage);
+      setPasswordValidationMessage(false);
     }
+    // const errorMessageEmail = checkIfEmailIsValid(loginEmail);
+    // const errorMessagePassword = checkIfPasswordIsValid(loginPassword);
+
+    // if (emailExists) {
+    //   navigate("/routeLayout");
+    //   // alert("Successfully from LOGIN PAGE");
+    //   // return;
+    // } else {
+    //   // console.log("Email dosen't exist");
+    //   setLoginsEmailValidationMessage(!emailValidationMessage);
+    //   setPasswordValidationMessage(!loginPasswordValidationMessage);
+    // }
+
+    // console.log(passwordMatch);
+
+    // else {
+    //   setLoginsEmailValidationMessage(errorMessageEmail);
+    //   setPasswordValidationMessage(errorMessagePassword);
+    //   // console.log("Email  does not exist");
+    //   // alert("Email  does not exist");
+    // }
+
+    // if (!errorMessageEmail && !errorMessagePassword) {
+    //   console.log("nice");
+    // } else {
+    //   setLoginsEmailValidationMessage(errorMessageEmail);
   };
   // console.log({ emailValidationMessage });
   return (
@@ -85,38 +123,37 @@ const Login = () => {
               name="username"
               // required
               placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={loginEmail}
+              onChange={(e) => setLoginsEmail(e.target.value)}
             />
-            {!!emailValidationMessage && (
+            {emailValidationMessage && (
               <p className="login-page__container__form__input_email__error">
-                {emailValidationMessage}
+                {/*{emailValidationMessage}*/}
+                Email dosen't exist
               </p>
             )}
 
             {/*<label>Password</label>*/}
             <input
               className="login-page__container__form__input"
-              type="password"
-              name="password"
+              type="loginPassword"
+              name="loginPassword"
               // required
               placeholder="Password"
-              value={password}
+              value={loginPassword}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {!!passwordValidationMessage && (
+            {loginPasswordValidationMessage && (
               <p className="login-page__container__form__input_password__error">
-                {passwordValidationMessage}
+                {/*{loginPasswordValidationMessage}*/}
+                Invalid Password
               </p>
             )}
           </div>
 
           <button
-            // onClick={() => {
-            //   validateForm();
-            // }}
             className={`login-page__container__form__button`}
-            // disabled={isFirstLoad ? true : !(emailValid && passwordValid)}
+            // disabled={isFirstLoad ? true : !(emailValid && loginPasswordValid)}
             type="submit"
           >
             {/*SignUp to your account*/}
@@ -124,9 +161,14 @@ const Login = () => {
           </button>
         </form>
         {/*{valid && <p>Insert a value</p>}*/}
-        <p className="login-page__container__text">
-          Don't have an account? <Link to="/signUp">Sign Up</Link>
-        </p>
+        <div className="login-page__container__text">
+          <p className="login-page__container__text__p">
+            Don't have an account?
+          </p>
+          <Link className="login-page__container__text__link" to="/signUp">
+            Sign Up
+          </Link>
+        </div>
       </div>
     </div>
   );
