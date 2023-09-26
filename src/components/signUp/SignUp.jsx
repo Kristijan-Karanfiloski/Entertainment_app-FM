@@ -67,6 +67,9 @@ const SignUp = () => {
 
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
 
+    const loggedInUsers =
+      JSON.parse(localStorage.getItem("loggedInUser")) || [];
+
     const signUpEmailExists = existingUsers.some(
       (user) => user.signUpEmail === signUpEmail
     );
@@ -101,8 +104,10 @@ const SignUp = () => {
       // }
 
       existingUsers.push({ signUpEmail, signUpPassword });
+      // loggedInUsers.push({ signUpEmail });
 
       localStorage.setItem("users", JSON.stringify(existingUsers));
+      localStorage.setItem("loggedInUser", JSON.stringify({ signUpEmail }));
       // localStorage.setItem("signUpEmail", JSON.stringify(signUpEmail));
       // localStorage.setItem("signUpPassword", JSON.stringify(signUpPassword));
       // localStorage.setItem("signUp", JSON.stringify(signUpPassword));
@@ -171,7 +176,7 @@ const SignUp = () => {
             type="submit"
           >
             {/*SignUp to your account*/}
-            Sign up
+            CREATE ACCOUNT
           </button>
         </form>
         {/*{valid && <p>Insert a value</p>}*/}

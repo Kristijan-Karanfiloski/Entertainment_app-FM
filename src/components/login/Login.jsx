@@ -55,8 +55,8 @@ const Login = () => {
 
     // console.log("Email exists: ", emailExists);
 
-    console.log("Sign Up Email :", { loginEmail });
-    console.log("Sign Up Password :", { loginPassword });
+    // console.log("Sign Up Email :", { loginEmail });
+    // console.log("Sign Up Password :", { loginPassword });
 
     if (emailExists) {
       if (passwordMismatchForUser) {
@@ -71,7 +71,12 @@ const Login = () => {
         // Password matches, navigate to the next page.
         setPasswordValidationMessage(loginPasswordValidationMessage);
         setLoginsEmailValidationMessage(emailValidationMessage);
-        navigate("/routeLayout");
+        // Add this line to set the loggedInUser in localStorage
+        localStorage.setItem(
+          "loggedInUser",
+          JSON.stringify({ signUpEmail: loginEmail })
+        );
+        navigate("/dashboard");
       }
     } else {
       console.log("EmailExist from else :", emailExists);
