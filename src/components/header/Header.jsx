@@ -81,6 +81,7 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
               <button
                 key={navigationIconButtons}
                 className="navigation__controls"
+                //if there is no ()=> the function will be called imidietly
                 onClick={() => handleClickBookmarkIcon(navigationIconButtons)}
               >
                 {navigationIconButtons === navigationIcon
