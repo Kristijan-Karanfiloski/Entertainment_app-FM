@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Login from "./login/Login.jsx";
 import Header from "./header/Header.jsx";
+import SearchBar from "./searchBar/SearchBar.jsx";
+import "./Dashboard.scss";
 
 const Dashboard = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(null);
@@ -33,10 +35,21 @@ const Dashboard = () => {
   return (
     <div>
       {userLoggedIn ? (
-        <div>
-          {/*<p>{userLoggedIn}</p>*/}
-          {/*<button onClick={handleLogOut}>Log Out</button>*/}
-          <Header userLoggedIn={userLoggedIn} handleLogOut={handleLogOut} />
+        <div className="dashboard__container">
+          <div className="dashboard__container_header">
+            <Header userLoggedIn={userLoggedIn} handleLogOut={handleLogOut} />
+          </div>
+          <div className="dashboard__container_right">
+            <div className="dashboard__container_searchBar">
+              <SearchBar />
+            </div>
+            <div className="dashboard__container_mainContent">
+              <section>
+                <h1 style={{ color: "red" }}>Trending CONTENT</h1>
+              </section>
+              {/* Main Content */}
+            </div>
+          </div>
         </div>
       ) : (
         <Login />

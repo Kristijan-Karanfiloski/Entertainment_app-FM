@@ -1,0 +1,31 @@
+.searchFrom {
+  //position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  .searchForm__input {
+    width: 80%;
+    //padding: 1rem 0 1rem 3rem;
+    padding: 0.5rem 0;
+    background: transparent;
+    border: none;
+    background: none;
+    color: #5a698f;
+    caret-color: #fc4747; /* or any other color you prefer */
+    //border-bottom: 2px solid #5a698f;
+  }
+  .searchForm__input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #5a698f;
+  }
+
+  .searchForm__svg {
+    //position: absolute;
+    //left:8px;
+    //top:50%;
+    //transform: translateY(-50%);
+    cursor: pointer;
+  }
+}

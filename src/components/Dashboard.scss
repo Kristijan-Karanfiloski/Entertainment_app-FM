@@ -1,3 +1,44 @@
-.hoiem{
-  color: #ffffff;
+.dashboard__container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Takes full height */
+  //background: #fc4747;
+  //padding: 0.5rem;
+
+  .dashboard__container_right {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+///// FOR  TABLET////////////////////////////////
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet-only styles here */
+  .dashboard__container {
+    background: yellow;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+
+/////FOR DESKTOP////////////////////////////////
+
+@media (min-width: 1024px) {
+  .dashboard__container {
+    display: grid;
+    grid-template-columns: 0.1fr 1fr;
+    grid-template-rows: 1fr;
+    //background: green;
+
+    .dashboard__container_header {
+      height: 100vh;
+      border-radius: 5rem;
+      padding: 1rem;
+    }
+
+    .dashboard__container_right {
+      padding-top: 1rem;
+    }
+  }
 }

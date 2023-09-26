@@ -1,5 +1,5 @@
 import "./Header.scss";
-import Logo from "../../../public/assets/logo.svg";
+import Logo from "../../../public/logo.svg";
 // import BookmarkEmpty from "../../../public/assets/icon-bookmark-empty.svg";
 // import BookmarkFull from "../../../public/assets/icon-bookmark-full.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -71,11 +71,11 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
           {/*))}*/}
 
           {Object.keys(navigationIcons).map((navigationIconButtons) => {
-            console.log(
-              "Current navigationIconButtons:",
-              navigationIconButtons
-            );
-            console.log("CURRENT NAVIGATIONICON:", navigationIcon);
+            // console.log(
+            //   "Current navigationIconButtons:",
+            //   navigationIconButtons
+            // );
+            // console.log("CURRENT NAVIGATIONICON:", navigationIcon);
 
             return (
               <button
@@ -110,7 +110,7 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
           {/*<button className="navigation__controls"></button>*/}
         </div>
         <div>
-          <p>{userLoggedIn}</p>
+          {/*<p>{userLoggedIn}</p>*/}
           <button onClick={handleLogOut}>Log out</button>
         </div>
       </nav>
