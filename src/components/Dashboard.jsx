@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Login from "./login/Login.jsx";
 import Header from "./header/Header.jsx";
 import SearchBar from "./searchBar/SearchBar.jsx";
@@ -44,9 +44,7 @@ const Dashboard = () => {
               <SearchBar />
             </div>
             <div className="dashboard__container_mainContent">
-              <section>
-                <h1 style={{ color: "red" }}>Trending CONTENT</h1>
-              </section>
+              <Outlet />
               {/* Main Content */}
             </div>
           </div>

@@ -2,6 +2,10 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import SignUp from "../components/signUp/SignUp.jsx";
 import Dashboard from "../components/Dashboard.jsx";
 import Login from "../components/login/Login.jsx";
+import HomePage from "../pages/homePage/HomePage.jsx";
+import MoviesPage from "../pages/moviesPage/MoviesPage.jsx";
+import SeriesPage from "../pages/seriesPage/SeriesPage.jsx";
+import BookmarkedPage from "../pages/bookmarkedPage/BookmarkedPage.jsx";
 // import ProtectedRoute from "../components/protectedRoute/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
@@ -19,18 +23,20 @@ const router = createBrowserRouter([
   //     </ProtectedRoute>
   //   ),
   // },
+  // {
+  //   path: "/dashboard",
+  //   element: <Dashboard />,
+  // },
   {
     path: "/dashboard",
     element: <Dashboard />,
+    children: [
+      { path: "home", element: <HomePage /> },
+      { path: "movies", element: <MoviesPage /> },
+      { path: "series", element: <SeriesPage /> },
+      { path: "bookmarks", element: <BookmarkedPage /> },
+    ],
   },
-  // {
-  //     path: "/dashboard",
-  //     element: <Dashboard />,
-  //     children: [
-  //         { path: "home", element: <Outlet /> },
-  //         { path: "search", element: <Outlet /> },
-  //     ],
-  // },
 ]);
 
 export default router;

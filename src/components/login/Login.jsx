@@ -77,7 +77,7 @@ const Login = () => {
           "loggedInUser",
           JSON.stringify({ signUpEmail: loginEmail })
         );
-        navigate("/dashboard");
+        navigate("/dashboard/home");
       }
     } else {
       console.log("EmailExist from else :", emailExists);

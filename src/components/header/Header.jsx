@@ -8,6 +8,8 @@ import HomeSvg from "../../svg/HomeSvg.jsx";
 import MoviesSvg from "../../svg/MoviesSvg.jsx";
 import SeriesSvg from "../../svg/SeriesSvg.jsx";
 import BookmarkSvg from "../../svg/BookmarkSvg.jsx";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 // import login from "../login/Login.jsx";
 
 const Header = ({ userLoggedIn, handleLogOut }) => {
@@ -15,6 +17,7 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
     (state) => state.navigationIconSlice.activeIcon
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const navigationIcons = {
     home: {
@@ -35,6 +38,40 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
     },
   };
 
+  //    This effect runs only once (because the dependency array is empty).
+  //     It retrieves an item from localStorage called ACTIVE_ICON.
+  //     It parses that item to JSON and logs it to the console.
+  //     If the parsed data exists, it dispatches an action to update some state and navigates to a
+  //     new page using the parsed data.
+  //     The  effect  serve as an initializer. When the component mounts, it tries to retrieve
+  //   the last active icon from localStorage, apply it to the state, and navigate the user to the corresponding
+  //  dashboard page.
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("ACTIVE_ICON");
+    const parsedData = JSON.parse(data);
+    console.log("Retrieved from localStorage:", parsedData);
+    if (parsedData) {
+      dispatch(setActiveIcon(parsedData));
+      navigate(`/dashboard/${parsedData}`);
+    }
+  }, []);
+
+  ////////////////////////////////////////////////////////////////////////
+
+  //    The second effect is a "saver." Whenever the navigationIcon changes, it updates the localStorage
+  //     to ensure the latest state is saved.
+  //    This effect runs whenever navigationIcon changes (because navigationIcon is specified in the dependency array).
+  //     It saves the value of navigationIcon into localStorage after stringifying it.
+  //     It also logs the value of navigationIcon to the console.
+
+  // useEffect(() => {
+  //   window.localStorage.setItem("ACTIVE_ICON", JSON.stringify(navigationIcon));
+  //   console.log("NAVIGATION ICON", navigationIcon);
+  // }, [navigationIcon]);
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+
   // console.log(navigationIcon);
   // console.log("WITHOUT MAP METHOD :", Object.keys(navigationIcons));
   // console.log(
@@ -47,8 +84,11 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
 
   // console.log("NAVIGATION ICON", navigationIcon);
 
-  const handleClickBookmarkIcon = (iconName) => {
+  const handleChangeOnActiveIcon = (iconName) => {
+    window.localStorage.setItem("ACTIVE_ICON", JSON.stringify(iconName));
+    // console.log("NAVIGATION ICON", navigationIcon);
     dispatch(setActiveIcon(iconName));
+    navigate(`/dashboard/${iconName}`);
   };
 
   return (
@@ -62,7 +102,7 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
           {/*  <button*/}
           {/*    key={navigationIconButtons}*/}
           {/*    className="navigation__controls"*/}
-          {/*    onClick={() => handleClickBookmarkIcon(navigationIconButtons)}*/}
+          {/*    onClick={() => handleChangeOnActiveIcon(navigationIconButtons)}*/}
           {/*  >*/}
           {/*    {navigationIconButtons === navigationIcon*/}
           {/*      ? navigationIcons[navigationIconButtons].active*/}
@@ -82,7 +122,7 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
                 key={navigationIconButtons}
                 className="navigation__controls"
                 //if there is no ()=> the function will be called imidietly
-                onClick={() => handleClickBookmarkIcon(navigationIconButtons)}
+                onClick={() => handleChangeOnActiveIcon(navigationIconButtons)}
               >
                 {navigationIconButtons === navigationIcon
                   ? navigationIcons[navigationIconButtons].active
@@ -93,7 +133,7 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
 
           {/*////////////////////////////////////////////////////////////////*/}
           {/*<button*/}
-          {/*  onClick={handleClickBookmarkIcon}*/}
+          {/*  onClick={handleChangeOnActiveIcon}*/}
           {/*  className="navigation__controls navigation__controls_bookmark"*/}
           {/*>*/}
           {/*  <img*/}

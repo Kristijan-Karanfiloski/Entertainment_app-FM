@@ -9,7 +9,7 @@ const SearchBar = () => {
   );
   const dispatch = useDispatch();
 
-  console.log(searchInputValue);
+  // console.log(searchInputValue);
 
   return (
     <>
