@@ -9,7 +9,7 @@
     //padding: 1rem 0 1rem 3rem;
     padding: 0.5rem 0;
     background: transparent;
-    border: none;
+    border: 2px solid transparent;
     background: none;
     color: #5a698f;
     caret-color: #fc4747; /* or any other color you prefer */
@@ -17,7 +17,7 @@
   }
   .searchForm__input:focus {
     outline: none;
-    border: none;
+    //border: none;
     border-bottom: 2px solid #5a698f;
   }
 
