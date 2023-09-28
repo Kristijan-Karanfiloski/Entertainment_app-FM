@@ -1,17 +1,3 @@
-//
-//.movie-card__header {
-//  color: white;
-//  margin: 4% 0 4% 4%;
-//}
-//
-//.movie-card__wrapper {
-//  display: flex;
-//  //gap: 1.25rem;
-//  flex-wrap: wrap;
-//  //margin: 0 4%;
-//  //justify-content: space-between;
-//}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -62,5 +48,23 @@
   &__name {
     margin-top: 0.5rem;
     font-weight: bold;
+  }
+}
+
+///// FOR  TABLET////////////////////////////////
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet-only styles here */
+
+  .card {
+    flex-basis: calc(33.333% - 4%);
+  }
+}
+
+/////FOR DESKTOP////////////////////////////////
+
+@media (min-width: 1024px) {
+  .card {
+    flex-basis: calc(25% - 4%);
   }
 }
