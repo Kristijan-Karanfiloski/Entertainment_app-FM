@@ -14,27 +14,13 @@ const SeriesPage = () => {
 
   // console.log("TV SERIES :", tvSeriesData);
 
-  // const tvSeries = tvSeriesData.map((categoryTv) => (
-  //   <Card
-  //     key={categoryTv.title}
-  //     title={categoryTv.title}
-  //     image={categoryTv.thumbnail.regular.small}
-  //     bookmarked={
-  //       categoryTv.isBookmarked === true ? BookmarkFull : BookmarkEmpty
-  //     }
-  //     year={categoryTv.year}
-  //     category={categoryTv.category}
-  //     rating={categoryTv.rating}
-  //     svg={<SeriesSvg />}
-  //   />
-  // ));
-
   return (
     <>
       <h2 className="tvSeries-card__header">Movies</h2>
       <div className="tvSeries__container">
         {tvSeriesData.map((categoryTv) => (
           <Card
+            //prop that are in the reusable card are prop.key,prop.title,prop.image
             key={categoryTv.title}
             title={categoryTv.title}
             image={categoryTv.thumbnail.regular.small}
@@ -44,7 +30,7 @@ const SeriesPage = () => {
             year={categoryTv.year}
             category={categoryTv.category}
             rating={categoryTv.rating}
-            svg={<SeriesSvg />}
+            svg={<SeriesSvg fill={"rgb(174, 182, 201)"} />}
           />
         ))}
       </div>
