@@ -50,7 +50,7 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
   useEffect(() => {
     const data = window.localStorage.getItem("ACTIVE_ICON");
     const parsedData = JSON.parse(data);
-    console.log("Retrieved from localStorage:", parsedData);
+    // console.log("Retrieved from localStorage:", parsedData);
     if (parsedData) {
       dispatch(setActiveIcon(parsedData));
       navigate(`/dashboard/${parsedData}`);
