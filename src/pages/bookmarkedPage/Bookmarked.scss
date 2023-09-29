@@ -1,0 +1,25 @@
+.categorySeries__wrapper {
+  color: white;
+
+  .categorySeries__wrapper_header {
+    margin: 4% 0 4% 4%;
+  }
+
+  .categorySeries__wrapper__container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.categoryMovies__wrapper {
+  color: white;
+
+  .categoryMovies__wrapper_header {
+    margin: 4% 0 4% 4%;
+  }
+
+  .categoryMovies__wrapper__container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
