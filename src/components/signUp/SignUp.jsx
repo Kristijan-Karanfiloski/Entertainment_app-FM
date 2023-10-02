@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../../public/logo.svg";
 import "./SignUp.scss";
 import { useState } from "react";
@@ -179,10 +179,12 @@ const SignUp = () => {
             CREATE ACCOUNT
           </button>
         </form>
-        {/*{valid && <p>Insert a value</p>}*/}
-        {/*<p className="signUp-page__container__text">*/}
-        {/*  Don't have an account? <span>Sign Up</span>{" "}*/}
-        {/*</p>*/}
+        <div className="signUp__container__text">
+          <p className="signUp__container__text__p">Already have an account?</p>
+          <Link className="signUp__container__text__link" to="/">
+            Login
+          </Link>
+        </div>
       </div>
     </div>
   );
