@@ -7,6 +7,7 @@ const SignUp = () => {
   // const [users, setUsers] = useState(storedItems);
   const [signUpEmail, setEmail] = useState("");
   const [signUpPassword, setPassword] = useState("");
+  const [signUpPasswordRepeat, setSignUpPasswordRepeat] = useState("");
   const [signUpEmailValidationMessage, setEmailValidationMessage] =
     useState("");
   const [signUpPasswordValidationMessage, setPasswordValidationMessage] =
@@ -47,6 +48,14 @@ const SignUp = () => {
     }
   };
 
+  const checkIfPasswordMatches = () => {
+    if (signUpPassword === signUpPasswordRepeat) {
+      console.log("Password matches");
+    } else {
+      console.log("Password dosent match");
+    }
+  };
+
   const checkIfEmailIsValid = (signUpEmail) => {
     const signUpEmailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     // console.log("signUpEmail", signUpEmailRegex.test(signUpEmail));
@@ -67,8 +76,8 @@ const SignUp = () => {
 
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-    const loggedInUsers =
-      JSON.parse(localStorage.getItem("loggedInUser")) || [];
+    // const loggedInUsers =
+    //   JSON.parse(localStorage.getItem("loggedInUser")) || [];
 
     const signUpEmailExists = existingUsers.some(
       (user) => user.signUpEmail === signUpEmail
@@ -76,7 +85,6 @@ const SignUp = () => {
 
     if (signUpEmailExists) {
       alert("Account with that Email already exists");
-
       return;
     }
 
@@ -157,8 +165,8 @@ const SignUp = () => {
               name="signUpPassword"
               // required
               placeholder="Password"
-              value={signUpPassword}
-              onChange={(e) => setPassword(e.target.value)}
+              value={signUpPasswordRepeat}
+              onChange={(e) => setSignUpPasswordRepeat(e.target.value)}
             />
             {!!signUpPasswordValidationMessage && (
               <p className="signUp-page__container__form__input_signUpPassword__error">
@@ -179,9 +187,9 @@ const SignUp = () => {
             CREATE ACCOUNT
           </button>
         </form>
-        <div className="signUp__container__text">
+        <div className="signUp-page__container__text">
           <p className="signUp__container__text__p">Already have an account?</p>
-          <Link className="signUp__container__text__link" to="/">
+          <Link className="signUp-page__container__text__link" to="/">
             Login
           </Link>
         </div>

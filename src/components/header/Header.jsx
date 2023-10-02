@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 // import login from "../login/Login.jsx";
 
 const Header = ({ userLoggedIn, handleLogOut }) => {
-  const [logOut, setLogOut] = useState(true);
+  const [logOut, setLogOut] = useState(false);
 
   const navigationIcon = useSelector(
     (state) => state.navigationIconSlice.activeIcon
