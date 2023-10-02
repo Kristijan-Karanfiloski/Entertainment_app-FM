@@ -6,12 +6,13 @@ import { useState } from "react";
 const SignUp = () => {
   // const [users, setUsers] = useState(storedItems);
   const [signUpEmail, setEmail] = useState("");
-  const [signUpPassword, setPassword] = useState("");
+  const [signUpPassword, setSignUpPassword] = useState("");
   const [signUpPasswordRepeat, setSignUpPasswordRepeat] = useState("");
   const [signUpEmailValidationMessage, setEmailValidationMessage] =
     useState("");
   const [signUpPasswordValidationMessage, setPasswordValidationMessage] =
     useState("");
+  const [signUpPasswordMissMatch, setSignUpPasswordMissMatch] = useState("");
 
   // const [checkIfAccountExist, setCheckIfAccountExist] = useState(initState);
 
@@ -41,18 +42,19 @@ const SignUp = () => {
 
   const checkIfSignUpPasswordIsValid = (signUpPassword) => {
     if (signUpPassword.length <= 5) {
-      return "Password must be at least 6 characters long";
+      // return "Password must be at least 6 characters long";
+      return "Can't be empty";
       // console.log("signUpEmail must be at least 6 characters");
     } else {
       console.log("Successfully");
     }
   };
 
-  const checkIfPasswordMatches = () => {
+  const checkIfPasswordMatches = (signUpPassword, signUpPasswordRepeat) => {
     if (signUpPassword === signUpPasswordRepeat) {
-      console.log("Password matches");
+      return "";
     } else {
-      console.log("Password dosent match");
+      return "Password dosent match";
     }
   };
 
@@ -91,26 +93,17 @@ const SignUp = () => {
     // console.log(signUpEmail);
     const errorMessageEmail = checkIfEmailIsValid(signUpEmail);
     const errorMessagePassword = checkIfSignUpPasswordIsValid(signUpPassword);
+    const errorMessagePasswordDosentMatch = checkIfPasswordMatches(
+      signUpPasswordRepeat,
+      signUpPassword
+    );
 
     console.log({ errorMessageEmail });
-    if (!errorMessageEmail && !errorMessagePassword) {
-      // try {
-      //   const response = await fetch("http://localhost:8000/register", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({ signUpEmail, signUpPassword }),
-      //   });
-      //
-      //   const data = await response.json();
-      //   console.log(data);
-      //   navigate("/routeLayout");
-      //   console.log("submitted");
-      // } catch (error) {
-      //   console.log(error);
-      // }
-
+    if (
+      !errorMessageEmail &&
+      !errorMessagePassword &&
+      !errorMessagePasswordDosentMatch
+    ) {
       existingUsers.push({ signUpEmail, signUpPassword });
       // loggedInUsers.push({ signUpEmail });
 
@@ -126,6 +119,7 @@ const SignUp = () => {
     } else {
       setEmailValidationMessage(errorMessageEmail);
       setPasswordValidationMessage(errorMessagePassword);
+      setSignUpPasswordMissMatch(errorMessagePasswordDosentMatch);
     }
   };
   // console.log({ signUpEmailValidationMessage });
@@ -165,12 +159,27 @@ const SignUp = () => {
               name="signUpPassword"
               // required
               placeholder="Password"
-              value={signUpPasswordRepeat}
-              onChange={(e) => setSignUpPasswordRepeat(e.target.value)}
+              value={signUpPassword}
+              onChange={(e) => setSignUpPassword(e.target.value)}
             />
             {!!signUpPasswordValidationMessage && (
               <p className="signUp-page__container__form__input_signUpPassword__error">
                 {signUpPasswordValidationMessage}
+              </p>
+            )}
+
+            <input
+              className="signUp-page__container__form__input"
+              type="password"
+              name="signUpPassword"
+              // required
+              placeholder="Repeat Password"
+              value={signUpPasswordRepeat}
+              onChange={(e) => setSignUpPasswordRepeat(e.target.value)}
+            />
+            {!!signUpPasswordMissMatch && (
+              <p className="signUp-page__container__form__input_passwordMatch__error">
+                {signUpPasswordMissMatch}
               </p>
             )}
           </div>
