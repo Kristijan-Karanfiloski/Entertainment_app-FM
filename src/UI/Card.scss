@@ -77,10 +77,6 @@
   }
 }
 
-.card:hover .card__image-wrapper__playIcon__container {
-  opacity: 1;
-}
-
 ///// FOR  TABLET////////////////////////////////
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -88,6 +84,9 @@
 
   .card {
     flex-basis: calc(33.333% - 4%);
+    .card__image-wrapper__playIcon__container {
+      gap: 1rem;
+    }
   }
 }
 
@@ -96,5 +95,8 @@
 @media (min-width: 1024px) {
   .card {
     flex-basis: calc(25% - 4%);
+    .card__image-wrapper__playIcon__container {
+      gap: 1rem;
+    }
   }
 }

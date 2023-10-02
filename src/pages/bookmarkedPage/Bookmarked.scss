@@ -23,3 +23,16 @@
     flex-wrap: wrap;
   }
 }
+
+/////FOR DESKTOP////////////////////////////////
+
+@media (min-width: 1024px) {
+  .categoryMovies__wrapper_header {
+    font-size: 1.5rem;
+  }
+
+  .categorySeries__wrapper_header{
+    font-size: 1.5rem;
+  }
+
+}

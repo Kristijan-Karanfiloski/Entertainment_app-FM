@@ -1,5 +1,6 @@
 import "./Header.scss";
 import Logo from "../../../public/logo.svg";
+import ImgAvatar from "../../../public/image-avatar.png";
 // import BookmarkEmpty from "../../../public/assets/icon-bookmark-empty.svg";
 // import BookmarkFull from "../../../public/assets/icon-bookmark-full.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,10 +10,12 @@ import MoviesSvg from "../../svg/MoviesSvg.jsx";
 import SeriesSvg from "../../svg/SeriesSvg.jsx";
 import BookmarkSvg from "../../svg/BookmarkSvg.jsx";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import login from "../login/Login.jsx";
 
 const Header = ({ userLoggedIn, handleLogOut }) => {
+  const [logOut, setLogOut] = useState(true);
+
   const navigationIcon = useSelector(
     (state) => state.navigationIconSlice.activeIcon
   );
@@ -84,6 +87,10 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
 
   // console.log("NAVIGATION ICON", navigationIcon);
 
+  const handleLogOutUser = () => {
+    setLogOut(!logOut);
+  };
+
   const handleChangeOnActiveIcon = (iconName) => {
     window.localStorage.setItem("ACTIVE_ICON", JSON.stringify(iconName));
     // console.log("NAVIGATION ICON", navigationIcon);
@@ -98,18 +105,6 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
           <img src={Logo} alt="logo" />
         </div>
         <div className="navigation__controls">
-          {/*{Object.keys(navigationIcons).map((navigationIconButtons) => (*/}
-          {/*  <button*/}
-          {/*    key={navigationIconButtons}*/}
-          {/*    className="navigation__controls"*/}
-          {/*    onClick={() => handleChangeOnActiveIcon(navigationIconButtons)}*/}
-          {/*  >*/}
-          {/*    {navigationIconButtons === navigationIcon*/}
-          {/*      ? navigationIcons[navigationIconButtons].active*/}
-          {/*      : navigationIcons[navigationIconButtons].default}*/}
-          {/*  </button>*/}
-          {/*))}*/}
-
           {Object.keys(navigationIcons).map((navigationIconButtons) => {
             // console.log(
             //   "Current navigationIconButtons:",
@@ -132,26 +127,26 @@ const Header = ({ userLoggedIn, handleLogOut }) => {
           })}
 
           {/*////////////////////////////////////////////////////////////////*/}
-          {/*<button*/}
-          {/*  onClick={handleChangeOnActiveIcon}*/}
-          {/*  className="navigation__controls navigation__controls_bookmark"*/}
-          {/*>*/}
-          {/*  <img*/}
-          {/*    src={navigationIcon === false ? BookmarkEmpty : BookmarkFull}*/}
-          {/*    alt="empty"*/}
-          {/*  />*/}
-          {/*</button>*/}
-          {/*<button*/}
-          {/*  onClick={handleClickHomeIcon}*/}
-          {/*  className="navigation__controls"*/}
-          {/*>*/}
-          {/*  <HomeSvg fill={navigationIcon === false ? "#5A698F" : "#ffffff"} />*/}
-          {/*</button>*/}
-          {/*<button className="navigation__controls"></button>*/}
         </div>
-        <div>
+        <div className="navigation__avatar__container">
           {/*<p>{userLoggedIn}</p>*/}
-          <button onClick={handleLogOut}>Log out</button>
+          {logOut && (
+            <div
+              onClick={handleLogOut}
+              className="navigation__avatar__container__logout__container"
+            >
+              <p className="navigation__avatar__container__logout__container__text">
+                Log Out
+              </p>
+            </div>
+          )}
+          <div
+            onClick={handleLogOutUser}
+            className="navigation__avatar__container__icon"
+          >
+            <img src={ImgAvatar} alt="img-avatar" />
+          </div>
+          {/*<button onClick={handleLogOut}>Log out</button>*/}
         </div>
       </nav>
     </>

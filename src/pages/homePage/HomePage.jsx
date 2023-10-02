@@ -6,6 +6,7 @@ import BookmarkEmpty from "../../../public/icon-bookmark-empty.svg";
 import SeriesSvg from "../../svg/SeriesSvg.jsx";
 import MoviesSvg from "../../svg/MoviesSvg.jsx";
 import { useState } from "react";
+import PlayIconSvg from "../../svg/PlayIconSvg.jsx";
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -38,11 +39,6 @@ const HomePage = () => {
         <div className="trending__wrapper__container">
           {trending.map((trendingItemCard, index) => (
             <div
-              // className={`trending__wrapper__container__card ${
-              //   index === currentSlide
-              //     ? "trending__wrapper__container__card__active"
-              //     : ""
-              // }`}
               className="trending__wrapper__container__card"
               style={{ transform: `translateX(-${currentSlide * (80 + 4)}%)` }}
               key={index}
@@ -52,6 +48,19 @@ const HomePage = () => {
                 src={trendingItemCard.thumbnail.regular.small}
                 alt="trending img"
               />
+
+              {/*////////////////////////////////*/}
+
+              <div className="trending__wrapper__container__playIcon__container">
+                <div className="trending__wrapper__containerr__playIcon__container__svg">
+                  <PlayIconSvg />
+                </div>
+                <p className="trending__wrapper__containerr__playIcon__container__text">
+                  Play
+                </p>
+              </div>
+
+              {/*////////////////////////////////*/}
               <div className="trending__wrapper__container__card__info">
                 <div className="trending__wrapper__container__card__info__left">
                   <div className="trending__wrapper__container__card__info__left__top">
