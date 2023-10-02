@@ -14,8 +14,6 @@ const SignUp = () => {
     useState("");
   const [signUpPasswordMissMatch, setSignUpPasswordMissMatch] = useState("");
 
-  // const [checkIfAccountExist, setCheckIfAccountExist] = useState(initState);
-
   // const checkIfAccountExist = localStorage.getItem("signUp");
 
   // const [signUpPasswordValid, setPasswordValid] = useState(true);
