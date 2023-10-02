@@ -1,4 +1,5 @@
 import "./Card.scss";
+import PlayIconSvg from "../svg/PlayIconSvg.jsx";
 
 ////////////////////////////////////////////////////////////////
 // REUSABLE CHILD CARD
@@ -16,6 +17,14 @@ const Card = ({ title, image, bookmarked, year, category, rating, svg }) => {
             // src={movie.thumbnail}
             alt="Movie Poster"
           />
+          <div className="card__image-wrapper__playIcon__container">
+            <div className="card__image-wrapper__playIcon__container__svg">
+              <PlayIconSvg />
+            </div>
+            <p className="card__image-wrapper__playIcon__container__text">
+              Play
+            </p>
+          </div>
           <div className="icon">
             <img src={bookmarked} alt="bookmark icon" />
             {/*{movie.isBookmarked ? <BookmarkFull /> : <BookmarkEmpty />}*/}

@@ -6,6 +6,7 @@ import HomePage from "../pages/homePage/HomePage.jsx";
 import MoviesPage from "../pages/moviesPage/MoviesPage.jsx";
 import SeriesPage from "../pages/seriesPage/SeriesPage.jsx";
 import BookmarkedPage from "../pages/bookmarkedPage/BookmarkedPage.jsx";
+import SearchResult from "../pages/searchResultPage/SearchResult.jsx";
 // import ProtectedRoute from "../components/protectedRoute/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       { path: "movies", element: <MoviesPage /> },
       { path: "series", element: <SeriesPage /> },
       { path: "bookmarks", element: <BookmarkedPage /> },
+      { path: "searchResults", element: <SearchResult /> },
     ],
   },
 ]);

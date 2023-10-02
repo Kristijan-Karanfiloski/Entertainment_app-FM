@@ -1,0 +1,14 @@
+.searchResult__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.noResults__container {
+  border: 2px solid red;
+  height:50vh;
+  display: grid;
+  place-content: center;
+  .noResults__container__text {
+    color: white;
+  }
+}

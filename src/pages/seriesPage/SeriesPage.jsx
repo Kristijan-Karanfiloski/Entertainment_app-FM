@@ -16,7 +16,7 @@ const SeriesPage = () => {
 
   return (
     <>
-      <h2 className="tvSeries-card__header">Movies</h2>
+      <h2 className="tvSeries-card__header">TV Series</h2>
       <div className="tvSeries__container">
         {tvSeriesData.map((categoryTv) => (
           <Card
