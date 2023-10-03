@@ -1,1 +1,1 @@
-import img from "/public/";
+// import img from "/public/assets/thumbnails";
