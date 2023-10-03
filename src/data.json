@@ -323,9 +323,9 @@
     "title": "112",
     "thumbnail": {
       "regular": {
-        "small": "/public/images/112.jpg",
-        "medium": "/public/images/112.jpg",
-        "large": "/public/images/112.jpg"
+        "small": "../public/112.jpg",
+        "medium": "../public/112.jpg",
+        "large": "../public/112.jpg"
       }
     },
     "year": 2013,
