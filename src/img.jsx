@@ -1,1 +1,1 @@
-import img from "../public/beyond-earth";
+import img from "/public/";
