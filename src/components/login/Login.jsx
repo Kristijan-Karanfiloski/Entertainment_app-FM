@@ -142,7 +142,7 @@ const Login = () => {
             {/*<label>Password</label>*/}
             <input
               className="login-page__container__form__input"
-              type="loginPassword"
+              type="password"
               name="loginPassword"
               // required
               placeholder="Password"
