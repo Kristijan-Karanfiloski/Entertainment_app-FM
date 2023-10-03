@@ -1,1 +1,1 @@
-import img from "../public/112.jpg";
+import img from "/public/images/beyond-earth.jpg";

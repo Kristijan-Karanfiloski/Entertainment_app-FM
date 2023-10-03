@@ -3,13 +3,13 @@
     "title": "Beyond Earth",
     "thumbnail": {
       "trending": {
-        "small": "/public/assets/thumbnails/beyond-earth/trending/small.jpg",
-        "large": "/public/assets/thumbnails/beyond-earth/trending/large.jpg"
+        "small": "/images/beyond-earth.jpg",
+        "large": "/images/beyond-earth.jpg"
       },
       "regular": {
-        "small": "/public/assets/thumbnails/beyond-earth/regular/small.jpg",
-        "medium": "/public/assets/thumbnails/beyond-earth/regular/medium.jpg",
-        "large": "/public/assets/thumbnails/beyond-earth/regular/large.jpg"
+        "small": "/images/beyond-earth.jpg",
+        "medium": "/images/beyond-earth.jpg",
+        "large": "/images/beyond-earth.jpg"
       }
     },
     "year": 2019,
