@@ -383,9 +383,9 @@
     "title": "Asia in 24 Days",
     "thumbnail": {
       "regular": {
-        "small": "/public/assets/thumbnails/asia-in-24-days/regular/small.jpg",
-        "medium": "/public/assets/thumbnails/asia-in-24-days/regular/medium.jpg",
-        "large": "/public/assets/thumbnails/asia-in-24-days/regular/large.jpg"
+        "small": "/images/asia-in-24-days/regular/small.jpg",
+        "medium": "/images/asia-in-24-days/regular/small.jp",
+        "large": "/images/asia-in-24-days/regular/small.jp"
       }
     },
     "year": 2020,
