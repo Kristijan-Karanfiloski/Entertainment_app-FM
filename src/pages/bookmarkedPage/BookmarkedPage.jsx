@@ -1,4 +1,5 @@
-import data from "../../components/data/data.json";
+// import data from "../../components/data/data.json";
+import data from "../../data.json";
 import BookmarkFull from "../../../public/icon-bookmark-full.svg";
 import BookmarkEmpty from "../../../public/icon-bookmark-empty.svg";
 import SeriesSvg from "../../svg/SeriesSvg.jsx";

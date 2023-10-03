@@ -1,4 +1,5 @@
-import data from "../../components/data/data.json";
+// import data from "../../components/data/data.json"
+import data from "../../data.json";
 import { useSelector } from "react-redux";
 import Card from "../../UI/Card.jsx";
 import BookmarkFull from "../../../public/icon-bookmark-full.svg";

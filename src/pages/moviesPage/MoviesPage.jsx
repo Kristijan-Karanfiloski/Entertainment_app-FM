@@ -1,4 +1,5 @@
-import data from "../../components/data/data.json";
+// import data from "../../components/data/data.json";
+import data from "../../data.json";
 import "./MoviesPage.scss";
 import MoviesSvg from "../../svg/MoviesSvg.jsx";
 import BookmarkFull from "../../../public/icon-bookmark-full.svg";
