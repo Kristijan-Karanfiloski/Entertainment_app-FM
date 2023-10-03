@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../../public/logo.svg";
-
 import "./Login.scss";
 import { useState } from "react";
 
