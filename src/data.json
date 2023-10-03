@@ -323,7 +323,7 @@
     "title": "112",
     "thumbnail": {
       "regular": {
-        "small": "/public/assets/thumbnails/112/regular/small.jpg",
+        "small": "../public/images/112.jpg",
         "medium": "/public/assets/thumbnails/112/regular/medium.jpg",
         "large": "/public/assets/thumbnails/112/regular/large.jpg"
       }
