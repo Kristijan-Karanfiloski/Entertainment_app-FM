@@ -324,8 +324,8 @@
     "thumbnail": {
       "regular": {
         "small": "../public/images/112.jpg",
-        "medium": "/public/assets/thumbnails/112/regular/medium.jpg",
-        "large": "/public/assets/thumbnails/112/regular/large.jpg"
+        "medium": "../public/images/112.jpg",
+        "large": "../public/images/112.jpg"
       }
     },
     "year": 2013,
