@@ -47,7 +47,7 @@ const HomePage = () => {
             >
               <img
                 className="trending__wrapper__container__card__image"
-                src={trendingItemCard.thumbnail.regular.small}
+                src={trendingItemCard.thumbnail.trending.small}
                 // src={trendingItemCard.regular.small}
                 alt="trending img"
               />
